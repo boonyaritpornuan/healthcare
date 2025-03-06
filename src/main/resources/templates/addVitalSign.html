@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>เพิ่มข้อมูลสัญญาณชีพ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .flex-container {
+            display: flex;
+            gap: 10px;
+        }
+        .flex-container input {
+            flex: 1;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-container button {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>เพิ่มข้อมูลสัญญาณชีพ</h1>
+        <form th:action="@{/addVitalSign}" method="post">
+            <div>
+                <label>ชื่อผู้ป่วย:</label>
+                <input type="text" name="patientName" required />
+            </div>
+            <div>
+                <label>อัตราการเต้นของหัวใจ:</label>
+                <input type="number" step="0.1" name="heartRate" required />
+            </div>
+            <div>
+                <label>ความดันเลือด:</label>
+                <div class="flex-container">
+                    <input type="number" step="0.1" name="systolicPressure" placeholder="SYS" required />
+                    <input type="number" step="0.1" name="diastolicPressure" placeholder="DIA" required />
+                </div>
+            </div>
+            <div>
+                <label>อุณหภูมิร่างกาย:</label>
+                <input type="number" step="0.1" name="temperature" required />
+            </div>
+            <div>
+                <label>อัตราการหายใจ:</label>
+                <input type="number" step="0.1" name="breathingRate" required />
+            </div>
+            <div>
+                <label>ค่าน้ำตาลในเลือด (DTX):</label>
+                <input type="number" step="0.1" name="dtx" required />
+            </div>
+            <div>
+                <label>ความคิดเห็น:</label>
+                <textarea name="comments"></textarea>
+            </div>
+            <div class="button-container">
+                <button type="submit">เพิ่ม</button>
+                <button type="button" onclick="window.location.href='/home'">กลับหน้า Home</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

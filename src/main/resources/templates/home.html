@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>Vital Signs</h1>
+<form th:action="@{/search}" method="get">
+    <input type="text" name="patientName" placeholder="Search by patient name" />
+    <button type="submit">Search</button>
+</form>
+<table>
+    <tr>
+        <th>Timestamp</th>
+        <th>Patient Name</th>
+        <th>Heart Rate</th>
+        <th>Blood Pressure</th>
+        <th>Temperature</th>
+    </tr>
+    <tr th:each="vitalSign : ${vitalSigns}">
+        <td th:text="${vitalSign.timestamp}"></td>
+        <td th:text="${vitalSign.patientName}"></td>
+        <td th:text="${vitalSign.heartRate}"></td>
+        <td th:text="${vitalSign.bloodPressure}"></td>
+        <td th:text="${vitalSign.temperature}"></td>
+    </tr>
+</table>
+<a href="/add">Add New Vital Sign</a>
+</body>
+</html>
